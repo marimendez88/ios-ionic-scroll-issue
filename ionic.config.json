@@ -1,0 +1,7 @@
+{
+  "name": "IOS-Scroll-Issue",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
