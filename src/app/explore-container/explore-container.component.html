@@ -1,4 +1,17 @@
 <div id="container">
-  <strong>{{ name }}</strong>
-  <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <strong>{{ name }}</strong>
+    <strong>SCROLLING</strong>
+
+    <ion-list #lista>
+        <ion-item-sliding *ngFor="let user of userList ">
+            <ion-item>
+                <ion-label>
+                    <h3>{{user.name}}</h3>
+                    <p>{{user.email}}</p>
+                </ion-label>
+                <ion-label>{{user.phone}}</ion-label>
+            </ion-item>
+
+        </ion-item-sliding>
+    </ion-list>
 </div>
