@@ -1,17 +1,124 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 3
-    </ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>
+            Tab 3
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
+    <ion-header collapse="condense">
+        <ion-toolbar>
+            <ion-title size="large">Tab 3</ion-title>
+        </ion-toolbar>
+    </ion-header>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+
+    <ion-segment value="atoms" (ionChange)="segmentChanged($event)">
+        <ion-segment-button value="atoms">
+            Atoms
+        </ion-segment-button>
+        <ion-segment-button value="molecules">
+            Molecules
+        </ion-segment-button>
+        <ion-segment-button value="organism">
+            Organisms
+        </ion-segment-button>
+    </ion-segment>
+    <section *ngIf="segment === 'atoms'">
+
+        <ion-list #lista>
+            <ion-item-sliding *ngFor="let user of userList ">
+                <ion-item>
+                    <ion-label>
+                        <h3>{{user.name}}</h3>
+                        <p>{{user.email}}</p>
+                    </ion-label>
+                    <ion-label>{{user.phone}}</ion-label>
+                </ion-item>
+
+            </ion-item-sliding>
+        </ion-list>
+    </section>
+    <section *ngIf="segment === 'molecules'">
+        <br>
+        <div class="primary-buttons">
+            <!-- Primary L / Default -->
+            <ion-button class="size-l">Button text</ion-button>
+            <!-- Primary M / Default -->
+            <ion-button class="size-m">Button text</ion-button>
+            <!-- Primary S / Default -->
+            <ion-button class="size-s">Button text</ion-button>
+            <!-- Primary L / Disabled -->
+            <ion-button disabled class="size-l">Button text</ion-button>
+            <!-- Primary M / Disabled -->
+            <ion-button disabled class="size-m">Button text</ion-button>
+            <!-- Primary S / Disabled -->
+            <ion-button disabled class="size-s">Button text</ion-button>
+        </div>
+        <br>
+        <div class="secondary-buttons">
+            <!-- Secondary L / Default -->
+            <ion-button class="secondary size-l">Button text</ion-button>
+            <!-- Secondary M / Default -->
+            <ion-button class="secondary size-m">text</ion-button>
+            <!-- Secondary S / Default -->
+            <ion-button class="secondary size-s">text</ion-button>
+            <!-- Secondary L / Disabled -->
+            <ion-button disabled class="secondary size-l">Button text</ion-button>
+            <!-- Secondary M / Disabled -->
+            <ion-button disabled class="secondary size-m">text</ion-button>
+            <!-- Secondary S / Disabled -->
+            <ion-button disabled class="secondary size-s">text</ion-button>
+        </div>
+        <br>
+        <div class="inputs">
+            <!-- Center / Completed -->
+            <ion-input class="center" value="Bobby"></ion-input>
+            <!-- Left / Completed -->
+            <ion-input class="left" value="Text"></ion-input>
+            <!-- Center / Default -->
+            <ion-input class="center" placeholder="Arturo"></ion-input>
+            <!-- Left / Default -->
+            <ion-input class="left" placeholder="Insert Text Here..."></ion-input>
+        </div>
+        <br>
+        <div class="radio">
+            <ion-radio-group value="men">
+                <ion-label>
+                    <!-- Default / Selected -->
+                    <ion-radio mode="md" value="men"></ion-radio>
+                    <p>Men</p>
+                </ion-label>
+                <ion-label>
+                    <!-- Default / Selected -->
+                    <ion-radio mode="md" value="female"></ion-radio>
+                    <p>Female</p>
+                </ion-label>
+            </ion-radio-group>
+        </div>
+        <br>
+        <div class="navigation">
+            <ion-button [ngClass]="{'selected': step === 1}" (click)="step = 1">
+                <p>Page 1</p>
+            </ion-button>
+            <ion-button [ngClass]="{'selected': step === 2}" (click)="step = 2">
+                <p>Page 2</p>
+            </ion-button>
+        </div>
+    </section>
+    <section *ngIf="segment === 'organism'">
+
+
+        <h1> Tab without scroll</h1>
+
+        <ion-button expand="full" color="primary" (click)="presentAlert()">
+            Simple Alert
+        </ion-button>
+
+        <ion-button expand="full" color="secondary" (click)="presentAlertPrompt()">
+            Prompt Alert
+        </ion-button>
+
+    </section>
 </ion-content>

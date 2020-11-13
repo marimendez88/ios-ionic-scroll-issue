@@ -10,6 +10,8 @@ export class ExploreContainerComponent implements OnInit {
 
 
   userList: any = [];
+  step = 1;
+  segment = 'atoms';
 
 
   constructor() { }
@@ -19,5 +21,9 @@ export class ExploreContainerComponent implements OnInit {
     console.log(DataFakeUsers)
     this.userList = DataFakeUsers;
   }
+  segmentChanged(ev) {
+    this.segment = ev.detail.value;
+  }
+
 
 }
